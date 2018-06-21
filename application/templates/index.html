@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Global Electricity Data</title>
+    <title>Dashboard 2</title>
     <link rel="stylesheet" href="/static/index.css">
     <link rel="icon" href="/static/favicon.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -12,27 +12,25 @@
 			  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
 			  crossorigin="anonymous"></script>
     <script type="text/javascript">
-       google.charts.load('current', {
+        google.charts.load('current', {
            'packages':['geochart'],
            'mapsAppikey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
-       });
-       google.charts.setOnLoadCallback(drawMarkersMap);
+        });
+        google.charts.setOnLoadCallback(drawMarkersMap);
 
-       function drawMarkersMap() {
-           var data = google.visualization.arrayToDataTable([
-               ['lat', 'lon', 'Name', 'Size'],
-               [-34.3995434441, 150.329759348, 'Mittagong Grid Connect', 300],
-               [-34.5867492,150.6336753, 'Robertson', 200]
-           ]);
+        function drawMarkersMap() {
+            $.get('http://dashboard-5b-one.herokuapp.com/site-summary', function(data) {
+                var map_data = google.visualization.arrayToDataTable(data);
 
-           var options = {
+            var options = {
                region: 'AU',
                displayMode: 'markers'
-           };
+            };
 
-           var chart = new google.visualization.GeoChart(document.getElementById('graphs'));
-           chart.draw(data, options);
-       };
+            var chart = new google.visualization.GeoChart(document.getElementById('graphs'));
+            chart.draw(map_data, options);
+            });
+        }
    </script>
 </head>
 <body>
