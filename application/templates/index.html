@@ -1,61 +1,48 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="refresh" content="3600">
-    <meta charset="utf-8">
-
-    <title>5B</title>
-    <meta name="description" content="The HTML5 Herald">
-    <meta name="author" content="SitePoint">
-
+    <meta charset="UTF-8">
+    <title>Global Electricity Data</title>
     <link rel="stylesheet" href="/static/index.css">
+    <link rel="icon" href="/static/favicon.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+			  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+			  crossorigin="anonymous"></script>
+    <script type="text/javascript">
+       google.charts.load('current', {
+           'packages':['geochart'],
+           'mapsAppikey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+       });
+       google.charts.setOnLoadCallback(drawMarkersMap);
 
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="/static/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <link href="https://websygen.github.io/owfont/css/owfont-regular.css" rel="stylesheet" type="text/css">
+       function drawMarkersMap() {
+           var data = google.visualization.arrayToDataTable([
+               ['lat', 'lon', 'Name', 'Size'],
+               [-34.3995434441, 150.329759348, 'Mittagong Grid Connect', 300],
+               [-34.5867492,150.6336753, 'Robertson', 200]
+           ]);
+
+           var options = {
+               region: 'AU',
+               displayMode: 'markers'
+           };
+
+           var chart = new google.visualization.GeoChart(document.getElementById('graphs'));
+           chart.draw(data, options);
+       };
+   </script>
 </head>
-
 <body>
-    <div class="site-1" id="app">
-        <div class="chart-area">
-            <div class="site-chart" v-for="id in site_ids">
-                <div class="top-info-row">
-                    <div class="chart-headings">
-                        <div class="chart-label"><h2>((site_names[id]))</h2></div>
-                    </div>
-                    <site-weather v-bind:siteid="id"></site-weather>
-                </div>
-                <site-data v-bind:siteid="id"></site-data>
-                <site-status v-bind:siteid="id"></site-status>
-            </div>
+    <div class="container">
+        <div class="col-md-12">
+            <img src="/static/logo.png" alt="5B Logo" class="rounded mx-auto d-block">
         </div>
+        <div id="graphs"></div>
     </div>
-
-
 </body>
-
 <footer>
-    <script src="/static/index.js"></script>
-    <script>
-        var app = new Vue({
-            el:"#app",
-            delimiters: ["((", "))"],
-            data: {
-                site_names: {
-                    35400: 'Mittagong Grid Connected',
-                    28513: 'Robertson',
-                    28856: "Stephen Donnelly's Property",
-                    35150: 'Yarradale Stud',
-                    37596: 'Beverford - Solar Rentals'
-                },
-                site_ids: [35400, 28513, 28856, 35150, 37596],
-                date: ''
-            }
-        })
-    </script>
 </footer>
 </html>
