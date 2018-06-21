@@ -19,7 +19,7 @@
         google.charts.setOnLoadCallback(drawMarkersMap);
 
         function drawMarkersMap() {
-            $.get('http://dashboard-5b-one.herokuapp.com/site-summary', function(data) {
+            $.get('https://dashboard-5b-one.herokuapp.com/site-summary', function(data) {
                 var map_data = google.visualization.arrayToDataTable(data);
 
             var options = {
