@@ -2,50 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard 2</title>
+    <title>Resonate Twitter</title>
     <link rel="stylesheet" href="/static/index.css">
     <link rel="icon" href="/static/favicon.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-			  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
-			  crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        google.charts.load('current', {
-           'packages':['geochart'],
-           'mapsAppikey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
-        });
-        google.charts.setOnLoadCallback(drawMarkersMap);
-
-        function drawMarkersMap() {
-            $.get('https://dashboard-5b-one.herokuapp.com/site-summary', function(data) {
-                var map_data = google.visualization.arrayToDataTable(data);
-
-            var options = {
-               region: 'AU',
-               displayMode: 'markers'
-            };
-
-            var chart = new google.visualization.GeoChart(document.getElementById('graphs'));
-            chart.draw(map_data, options);
-            });
-        }
-   </script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm bg-light">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="https://dashboard-5b-one.herokuapp.com">Site Performance</a>
-            </li>
-        </ul>
-        <img src="/static/logo.png" alt="5B Logo" class="rounded mx-auto d-block">
-    </nav>
-    <div class="row">
-        <div class="col">
-            <div id="graphs"></div>
-        </div>
+    <div class="container">
+        <a class="twitter-timeline" href="https://twitter.com/ResonateAU?ref_src=twsrc%5Etfw">Tweets by ResonateAU</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
 </body>
 <footer>
