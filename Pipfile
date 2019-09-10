@@ -9,15 +9,14 @@ requests = "*"
 pendulum = "*"
 gunicorn = "*"
 Flask = "*"
-click = 6.7
-itsdangerous = 0.24
-Jinja2 = 2.10
-MarkupSafe = 1.0
-Werkzeug = 0.14.1
+click = "*"
+itsdangerous = "*"
+Jinja2 = "*"
+MarkupSafe = "*"
+Werkzeug = "*"
 flask_cors = "*"
 mongoengine = "*"
 flask_restful = "*"
-requests = "*"
 
 [dev-packages]
 
